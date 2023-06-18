@@ -1,0 +1,179 @@
+body{
+    background-color:#FBD23F;
+    -ms-overflow-style: none;
+    margin-bottom: 150px;
+}
+
+ 
+   ::-webkit-scrollbar {
+     display: none;
+   }
+ 
+   /*특정 부분 스크롤바 없애기*/
+   .background::before {
+    content: "";
+    display: block;
+    width: 500px;
+    height: 500px;
+    background-image: url(img/doll.png);
+    background-repeat: no-repeat;
+    opacity: 90%;
+    position: absolute;
+    top: 50px; /* Adjust the top position as needed */
+    left: 50px; /* Adjust the left position as needed */
+    border-radius: 0%;
+    animation: spin 6s linear infinite;
+}
+
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+.article{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+  }
+h1{
+    color: #000000;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+  
+  #square {
+    padding-top: 30vh;
+    width:800px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;  
+  }
+  
+  #box {
+    width:800px;
+    height:200px;
+    margin:5em auto 0 auto;
+
+    overflow:hidden;
+    border:8px solid rgb(218, 43 , 44);  
+   
+  }
+  
+  #roulette {
+    width:800px;
+    height:200px;
+    display:inline-flex;
+  }
+  
+  #roulette div {
+    min-width:600px;
+    height:200px;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;  
+    border-right:2px solid rgb(218, 43 , 44);  
+    padding:40px 10px;
+  }
+  
+
+  
+  #roulette div span {
+    font-family:Montserrat;
+    letter-spacing:-1px;
+    font-size:62px;
+  }
+  
+  #arrow {
+    width:0;
+    height:0;
+    border-left:35px solid transparent;
+    border-right:35px solid transparent;
+    border-bottom:100px solid steelblue;
+    position:relative;
+    top:-75px;
+  }
+  
+  button {
+
+    width:150px;
+    height:50px;
+    font-size:22px;
+    background:red;
+    border:0;
+    color:#FFF;
+  }
+  
+  button:hover {
+    background:green;
+    cursor:pointer;
+  }
+  
+  .shine {
+    -webkit-animation: brillo .5s ease;
+            animation: brillo .5s ease;
+  }
+  
+  #txt {
+    margin-top:1em;
+    font-family:Montserrat;
+    color:#FFF;
+  }
+  
+  @-webkit-keyframes brillo {
+    0% { border-bottom-color:steelblue; }
+    25%, 75% { border-bottom-color:green; }
+    100% { border-bottom-color:steelblue; }
+  }
+  
+  @keyframes brillo {
+    0% { border-bottom-color:steelblue; }
+    25%, 75% { border-bottom-color:green; }
+    100% { border-bottom-color:steelblue; }
+  }
+
+h4{
+    text-align: center;
+}
+  .data-link {
+    border: 0.1px solid red;
+    color: #FBD23F;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    display: inline-block;
+    padding: 8px 20px;
+    z-index: 3;
+   
+  }
+  
+  .cursor {
+    pointer-events: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border: 5px solid red;
+    margin: -15px 0 0 -15px;
+    pointer-events: none;
+    transition: all .2s ease-out;
+  }
+.data-link:hover{
+    
+    background-color: red;
+}
+  
+  button:active {
+    background-color: red;}

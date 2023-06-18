@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>2x9</title>
+
+      <link rel="stylesheet" href="main.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="jquery.reflection.js"></script>
+      <script src="jquery.cloud9carousel.js"></script>
+</head>
+
+<body>
+      <div id="wrap">
+            <div id="showcase">
+                 <a href="romeo.html"><img src="img/main1.png" width="500px"alt="로미오" class="cloud9-item"></a> 
+                  <a href="pet.html"><img src="img/main2.jpg" width="500px" alt="펫숍다이어리" class="cloud9-item"></a>
+                  <img src="img/main3.jpg" width="500px"  alt="사람냄새" class="cloud9-item">
+                  <img src="img/main4.png" width="500px" alt="메기" class="cloud9-item">
+                  <img src="img/main5.jpg" width="500px" alt="러브빌런" class="cloud9-item">
+                  <img src="img/main6.jpg" width="500px" alt="걸스온탑" class="cloud9-item">
+            </div>
+
+            <p id="item-title">&nbsp;</p>
+            <div class="nav noselect">
+                  <button class="left">◀</button>
+                  <button class="right">▶</button>
+            </div>
+
+
+      </div>
+
+      <script type="text/javascript">
+
+      $(function() {
+            var showcase = $("#showcase")
+
+            showcase.Cloud9Carousel( {
+                  yPos: 42,
+                  yRadius: 48,
+                  mirrorOptions: {
+                        gap: 12,
+                        height: 0.2
+                  },
+                  buttonLeft: $(".nav > .left"),
+                  buttonRight: $(".nav > .right"),
+                  autoPlay: false,
+                  bringToFront: true,
+
+                  onRendered: showcaseUpdated,
+                  onLoaded: function() {
+                        showcase.css( 'visibility', 'visible' )
+                        showcase.css( 'display', 'none')
+                        showcase.fadeIn( 1500 )
+                  }
+            })
+
+            function showcaseUpdated( showcase ) {
+                  var title = $("#item-title").html(
+                        $(showcase.nearestItem()).attr( 'alt' )
+                  )
+
+                  var c = Math.cos((showcase.floatIndex() % 1) * 2 * Math.PI)
+                  title.css('opacity', 0.5 + (0.5 * c))
+            }
+
+            $('.nav > button').click( function( e ) {
+                  var b = $(e.target).addClass( 'down' )
+                  setTimeout( function() { b.removeClass( 'down' ) }, 80)
+            } )
+
+            $(document).keydown( function( e ) {
+                  switch( e.keyCode ) {
+                        case 37:
+                        $('.nav > .left').click()
+                        break
+
+                        case 39:
+                        $('.nav > .right').click()
+                  }
+            })
+      })
+
+      </script>
+</body>
+</html>

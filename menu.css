@@ -1,0 +1,128 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Cutive+Mono");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+label .menu {
+  position: fixed;
+  right: -100px;
+  top: -100px;
+  z-index: 3;
+  width: 200px;
+  height: 200px;
+  border-radius: 50% 50% 50% 50%;
+  transition: 0.5s ease-in-out;
+  box-shadow: 0 0 0 0 rgb(42, 0, 0), 0 0 0 0 rgb(28, 0, 0);
+  cursor: pointer;
+}
+
+label .hamburger {
+  position: absolute;
+  top: 135px;
+  left: 50px;
+  width: 30px;
+  height: 2px;
+  background: rgb(218, 43 , 44);
+  display: block;
+  transform-origin: center;
+  transition: 0.5s ease-in-out;
+}
+
+label .hamburger:after, label .hamburger:before {
+  transition: 0.5s ease-in-out;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgb(218, 43 , 44);
+}
+
+label .hamburger:before {
+  top: -10px;
+}
+
+label .hamburger:after {
+  bottom: -10px;
+}
+
+label input {
+  display: none;
+}
+
+label input:checked + .menu {
+  box-shadow: 0 0 0 50vh rgba(0,0,0,0), 0 0 0 50vh rgba(0,0,0,0);
+  border-radius: 0;
+}
+
+label input:checked + .menu .hamburger {
+  transform: rotate(45deg);
+}
+
+label input:checked + .menu .hamburger:after {
+  transform: rotate(90deg);
+  bottom: 0;
+}
+
+label input:checked + .menu .hamburger:before {
+  transform: rotate(90deg);
+  top: 0;
+}
+
+label input:checked + .menu + ul {
+  opacity: 1;
+}
+
+label ul {
+  font-family: 'Pretendard';
+  margin-top: -15rem;
+  padding-left: 1rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  z-index: 200;
+  position: fixed;
+  top: 50%;
+  left: 93%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: 0.25s 0s ease-in-out;
+}
+
+label a {
+  width: 20rem;
+  margin-bottom: 1em;
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 768px) {
+  label .menu {
+    width: 150px;
+    height: 150px;
+  }
+
+  label .hamburger {
+    top: 100px;
+    left: 30px;
+  }
+
+  label ul {
+    font-size: 1rem;
+  }
+
+  label a {
+    width: 15rem;
+  }
+}

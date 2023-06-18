@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>펫숍브이로그</title>
+    <link rel="stylesheet" href="./menu1.css">
+    <link rel="stylesheet" href="./pet.css">
+    <link rel="stylesheet" href="footer.css">
+    
+
+</head>
+<body>
+
+    <div id="myMouse"></div>
+    <nav>
+    <label>
+      <input type="checkbox">
+      <span class="menu">
+        <span class="hamburger"></span>
+      </span>
+      <ul>
+        <li><a href="index.html">2x9<br>구교환X이옥섭</a></li>
+        <li><a href="romeo.html">Romeo <br>: 눈을 가진 죄</a></li>
+        <li><a href="pet.html">펫숍브이로그<br>🐱🏓💛🏃🏻‍♀️🐕🐈❌</a></li>
+        <li><a href="love.html">러브빌런<br>메구X구교환X김다빈</a></li>
+      </ul>
+    </label>
+    <div class="article"><img src="img/29.png" alt="" width="320px"></div>
+<section>
+</nav>
+   
+
+    <div id="square">
+
+        <div id="box">
+          <div id="roulette">
+            <template id="item">
+              <div>
+                <i class="fa"></i>
+                <span></span>
+              </div>
+            </template>
+          </div>
+        </div>
+        <div id="arrow"></div>
+        <button onClick="spin()">2X9</button>
+        <div id="txt"></div>
+      </div>
+      <!-- partial -->
+      <script  src="./pet.js">  </script>
+      
+</section>
+<div class="background"></div>
+<div class="cursor">
+</div>
+<section>
+<div>
+  <h4>
+    <div class="_blank">
+      <div class="data-link">
+
+     
+위험 없는 사랑을 당신에게
+</div>
+<div class="data-link">
+무당말 듣고
+</div>
+<div class="data-link">
+노란 줄만
+</div>
+<div class="data-link">
+밟는 사연
+</div>
+<div class="data-link">
+🐱🏓💛
+</div>
+<div class="data-link">
+🏃🏻‍♀️🐕🐈❌
+</div>
+<div class="data-link">
+3min
+</div>
+<div class="data-link">
+[펫숍브이로그]
+</div>
+</div>  </h4> </section>
+<section>
+  <footer>
+    <div class="container">
+      <p class="p1">OpenAI © 2023 – 2023<br>Copyright ©2023 All Rights Reserved.</p>
+      <img class="img1" src="img/youtube.png" width="60px" alt="">
+      <p class="p2">2x9</p>
+  </footer></section>
+<script>
+    const lerp = (f0, f1, t) => (1 - t) * f0 + t * f1
+
+
+const mouse = {
+  newX: 0,
+  newY: 0,
+  speedX: 0,
+  speedY: 0,
+  x: 0,
+  y: 0,
+  hover: false,
+  top: 0,
+  left: 0,
+  width: 0,
+  height: 0,
+}
+const $cursor = document.querySelector('.cursor')
+const links = document.querySelectorAll('.data-link')
+
+
+const handleMouse = (e) => {
+  if (!mouse.hover) {
+    mouse.x = e.clientX || e.touches[0].clientX
+    mouse.y = e.clientY || e.touches[0].clientY
+  }
+}
+window.addEventListener('mousemove', handleMouse)
+window.addEventListener('touchmove', handleMouse)
+window.addEventListener('touchstart', handleMouse)
+
+
+
+let timer
+links.forEach((link) => {
+  link.addEventListener('mouseenter', () => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      $cursor.classList.add('hover')
+      mouse.hover = true
+      const { top, left, width, height } = link.getBoundingClientRect()
+      mouse.x = left - 6
+      mouse.y = top - 1
+      mouse.width = width
+      mouse.height = height  
+    }, 100)
+    
+  })
+  link.addEventListener('mouseleave', () => {
+    clearTimeout(timer)
+      timer = setTimeout(() => {
+      $cursor.classList.remove('hover')
+      mouse.hover = false
+    }, 100)
+  })
+})
+
+
+const raf = () => {
+  mouse.newX = lerp(mouse.newX, mouse.x, .12)
+  mouse.newY = lerp(mouse.newY, mouse.y, .12)
+  
+  mouse.speedX = lerp(mouse.speedX, mouse.x - mouse.newX, .12)
+  mouse.speedY = lerp(mouse.speedY, mouse.y - mouse.newY, .12)
+  const speed = Math.abs(mouse.speedX) > Math.abs(mouse.speedY) ? mouse.speedX : -mouse.speedY
+  
+  let style
+  
+  if (!mouse.hover) {
+    style = {
+      width: '30px',
+      height: '30px',
+      marginLeft: '-15px',
+      marginTop: '-15px',
+      transform: `
+        translate(${mouse.newX}px, ${mouse.newY}px)
+        rotate(${45 - speed * 0.2}deg)
+        scale(${1 - Math.abs(speed) * 0.001})
+      `
+    }
+  } else {
+    style = {
+      width: `${mouse.width}px`,
+      height: `${mouse.height}px`,
+      marginLeft: 0,
+      marginTop: 0,
+      transform: `
+        translate(${mouse.newX}px, ${mouse.newY}px)
+        rotate(0deg)
+        scale(${1 - Math.abs(speed) * 0.001})
+      `
+    }
+  }
+  Object.assign($cursor.style, style)
+  
+  requestAnimationFrame(raf)
+}
+raf()
+</script>
+ 
+</body>
+</html>
